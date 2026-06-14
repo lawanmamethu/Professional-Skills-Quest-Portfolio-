@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Professional Skills Quest | W.M.M. Lawanma - IT Undergraduate Portfolio</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Three.js core -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.128.0/examples/jsm/"
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="cyber-grid"></div>
+
+    <div class="container">
+        <!-- HERO SECTION -->
+        <section class="glass-card" style="padding: 2rem; margin-bottom: 3rem;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+                <div>
+                    <div class="hud-text" style="font-size: 0.9rem; color: cyan;">◆ PLAYER PROFILE ◆</div>
+                    <h1 style="font-family: 'Orbitron'; font-size: 2.8rem; margin: 0.5rem 0;">W.M.M. Lawanma</h1>
+                    <p><i class="fas fa-id-card"></i> Player ID: <span style="color: #0af;">SA24610853</span> &nbsp;|&nbsp; <i class="fas fa-code"></i> Class: IT Undergraduate</p>
+                    <p><i class="fas fa-globe"></i> Mission: Become a Professional IT Expert</p>
+                    <button id="startMissionBtn" style="margin-top: 1.5rem;"><i class="fas fa-play"></i> START MISSION</button>
+                </div>
+                <div class="glass-card" style="padding: 1.2rem; min-width: 250px;">
+                    <div><i class="fas fa-comments"></i> Communication XP <span id="commXP">72</span>%</div>
+                    <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:72%"></div></div>
+                    <div class="mt-2"><i class="fas fa-chart-line"></i> Leadership XP <span id="leadXP">60</span>%</div>
+                    <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:60%"></div></div>
+                    <div class="mt-2"><i class="fas fa-users"></i> Teamwork XP <span id="teamXP">75</span>%</div>
+                    <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:75%"></div></div>
+                    <div class="mt-2"><i class="fas fa-brain"></i> Problem Solving XP <span id="probXP">73</span>%</div>
+                    <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:73%"></div></div>
+                    <div class="mt-2"><i class="fas fa-briefcase"></i> Professionalism XP <span id="profXP">82</span>%</div>
+                    <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:82%"></div></div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem; font-family: Orbitron;">⚡ Leveling Up Through Professional Skills ⚡</div>
+        </section>
+
+        <!-- GAME MAP SECTION - 10 MISSION WORLDS -->
+        <section style="margin: 4rem 0;">
+            <h2 class="hud-text" style="font-size: 2rem;"><i class="fas fa-map"></i> GAME MAP — MISSION WORLDS</h2>
+            <div class="worlds-grid" id="worldsGrid"></div>
+        </section>
+
+        <!-- SKILL TREE -->
+        <section class="glass-card" style="padding: 2rem; margin: 3rem 0;">
+            <h2 class="hud-text"><i class="fas fa-tree"></i> SKILL TREE (Core Competencies)</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; justify-content: center;" id="skillTreeContainer"></div>
+        </section>
+
+        <!-- ACHIEVEMENTS SECTION -->
+        <section style="margin: 3rem 0;">
+            <h2 class="hud-text"><i class="fas fa-trophy"></i> ACHIEVEMENTS UNLOCKED</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;" id="achievementsGrid"></div>
+        </section>
+
+        <!-- REFLECTION VAULT (enriched) -->
+        <section class="glass-card" style="padding: 2rem; margin: 3rem 0;">
+            <h2 class="hud-text"><i class="fas fa-database"></i> REFLECTION VAULT — Holographic Wisdom</h2>
+            <div id="reflectionsVault" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.2rem; margin-top: 1.5rem;"></div>
+        </section>
+
+        <!-- PLAYER JOURNEY TIMELINE RPG -->
+        <section style="margin: 3rem 0;">
+            <h2 class="hud-text"><i class="fas fa-chart-simple"></i> PLAYER JOURNEY TIMELINE</h2>
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; background: #0a0f2a90; border-radius: 2rem; padding: 1.8rem; backdrop-filter: blur(8px); gap: 12px;">
+                <div class="timeline-node floating">🏁 Beginner Student</div>
+                <div class="timeline-node floating">📘 Skill Learner</div>
+                <div class="timeline-node floating">🤝 Team Collaborator</div>
+                <div class="timeline-node floating">🎤 Professional Communicator</div>
+                <div class="timeline-node floating" style="border-color: cyan; background:#0af22;">🚀 Future IT Professional</div>
+            </div>
+        </section>
+
+        <!-- ABOUT PLAYER (Values + Beliefs + Goals exactly from PDF) -->
+        <section class="glass-card" style="padding: 2rem; margin: 2rem 0; display: flex; flex-wrap: wrap; gap: 2rem;">
+            <div style="flex:1"><h3><i class="fas fa-gem"></i> VALUES</h3><p>✔ Honesty<br>✔ Respect<br>✔ Responsibility</p>
+            <h3><i class="fas fa-brain"></i> BELIEFS</h3><p>🌱 Growth Mindset<br>⚡ Self Improvement</p></div>
+            <div style="flex:1"><h3><i class="fas fa-bullseye"></i> GOALS</h3><p><strong>Short Term:</strong> Improve communication & presentation skills.<br><strong>Long Term:</strong> Become a confident IT professional with leadership abilities.</p>
+            <h3><i class="fas fa-star"></i> CHARACTER</h3><p>Caring, Fairness, Responsibility, Courage, Citizenship</p></div>
+        </section>
+
+        <!-- CONTACT TERMINAL -->
+        <section class="glass-card" style="padding: 2rem; text-align: center;">
+            <h2 class="hud-text"><i class="fas fa-terminal"></i> CONTACT TERMINAL</h2>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+                <a href="https://github.com/lawanmamethu/lawanmamethu" style="color: cyan; font-size: 2.2rem; transition: 0.2s;"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/methuli-lawanma" style="color: cyan; font-size: 2.2rem;"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:methulilawanma9@gmail.com" style="color: cyan; font-size: 2.2rem;"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+94771234567" style="color: cyan; font-size: 2.2rem;"><i class="fas fa-phone-alt"></i></a>
+            </div>
+            <p class="copyright-line">© 2026 WMM Lawanma. All rights reserved.</p>
+        </section>
+    </div>
+
+    <!-- Mission Detail Modal (Rich Content from PDF) -->
+    <div id="missionModal" class="modal-rpg">
+        <div class="modal-content-rpg" id="missionDetailContainer">
+            <div id="missionDetailInner"></div>
+            <button id="closeMissionModalBtn" style="margin-top: 1.5rem; width: 100%;">✖ Close Mission Log</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        // 3D immersive background particles + rotating elements
+        const scene = new THREE.Scene();
+        scene.background = null;
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        
+        const particleCount = 2200;
+        const posArray = new Float32Array(particleCount * 3);
+        for(let i = 0; i < particleCount; i++) {
+            posArray[i*3] = (Math.random() - 0.5) * 220;
+            posArray[i*3+1] = (Math.random() - 0.5) * 120;
+            posArray[i*3+2] = (Math.random() - 0.5) * 90 - 30;
+        }
+        const particlesGeo = new THREE.BufferGeometry();
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({ size: 0.18, color: 0x0af, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending });
+        const stars = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(stars);
+        
+        const torusKnot = new THREE.Mesh(
+            new THREE.TorusKnotGeometry(2.5, 0.4, 180, 24),
+            new THREE.MeshStandardMaterial({ color: 0x0af, emissive: 0x0a3f7f, emissiveIntensity: 0.7, metalness: 0.8 })
+        );
+        scene.add(torusKnot);
+        const ambient = new THREE.AmbientLight(0x111133);
+        scene.add(ambient);
+        const light = new THREE.PointLight(0x0af, 1.2);
+        light.position.set(4, 5, 6);
+        scene.add(light);
+        camera.position.z = 14;
+        
+        function animateScene() {
+            requestAnimationFrame(animateScene);
+            torusKnot.rotation.x += 0.006;
+            torusKnot.rotation.y += 0.01;
+            stars.rotation.y += 0.0003;
+            renderer.render(scene, camera);
+        }
+        animateScene();
+        window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+        
+        // ----- Detailed missions data (based on PDF content, enriched) -----
+        const missionsData = [
+            { id:1, title:"🌍 World 01 – Introduction", brief:"Core professional skills, values, beliefs, Johari Window.", skillsLearned:"Communication, Critical Thinking, Teamwork, Adaptability", concepts:"Values: Honesty, Respect, Responsibility. Beliefs: Growth mindset. Character traits.", reflection:"I understood that professional skills (soft skills) are the foundation for workplace success. Johari Window helps self-awareness. My short term goal: improve communication & presentation.", xp:70 },
+            { id:2, title:"🌍 World 02 – Emotional Intelligence", brief:"Aristotle's wisdom, emotional leakage, Goleman's competencies.", skillsLearned:"Self-awareness, Self-regulation, Empathy, Motivation", concepts:"Emotional leakage (voice, breathing, muscle tone). Goleman model. Mindfulness & Cognitive Re-appraisal.", reflection:"Anger can be channeled into right direction. Emotional intelligence is being smart with feelings. I will monitor my emotional leakage and practice mindfulness daily.", xp:85 },
+            { id:3, title:"🌍 World 03 – CV Writing", brief:"CV structure, formatting, avoiding common mistakes.", skillsLearned:"CV formatting, grammar precision, professional language", concepts:"Clear layout, bullet points, appropriate font, references. Spelling errors can ruin impression.", reflection:"My CV is my handshake before the interview. One spelling mistake can disqualify me. I'll craft a story that sells my abilities.", xp:78 },
+            { id:4, title:"🌍 World 04 – Portfolio Writing", brief:"Portfolio importance, digital platforms like GitHub & LinkedIn.", skillsLearned:"Portfolio curation, evidence of competence, personal branding.", concepts:"Uses: job application, freelancing, performance evaluation. Platforms: GitHub Pages, LinkedIn, Behance.", reflection:"A degree proves you studied. A portfolio proves you can DO. I will build my GitHub portfolio and showcase projects.", xp:82 },
+            { id:5, title:"🌍 World 05 – Professional Responsibilities & Ethics", brief:"Code of ethics, ethical decision making in computing.", skillsLearned:"Ethical judgement, professionalism, data responsibility.", concepts:"Profession = specialized knowledge. Ethics = beliefs about right/wrong. Prevents harm, builds trust.", reflection:"Technical skills alone aren't enough. I will handle data responsibly and follow ACM/IEEE ethics. Being honest makes a real professional.", xp:88 },
+            { id:6, title:"🌍 World 06 – Interview Skills", brief:"Non-verbal communication, handling questions, dress code.", skillsLearned:"Interview confidence, active listening, body language.", concepts:"Smile, eye contact, sitting straight, showing enthusiasm. Interview is a mutual conversation.", reflection:"Interview is not a test but a conversation. Non-verbal cues matter. I'll practice posture and calmness before every interview.", xp:76 },
+            { id:7, title:"🌍 World 07 – Meetings", brief:"Meeting terminology, planning, effective contribution.", skillsLearned:"Meeting discipline, active listening, avoiding digressions.", concepts:"Agenda, minutes, chairperson. Don'ts: interrupting, monopolising. Do's: allow others to finish.", reflection:"I used to interrupt. Now I understand that good meeting is about listening. I'll respect agendas and ground rules.", xp:68 },
+            { id:8, title:"🌍 World 08 – Email & Telephone Etiquette", brief:"Professional emails, phone manners, corporate image.", skillsLearned:"Email clarity, telephone etiquette, professional tone.", concepts:"Always subject line, never all caps, think before send. Answer within 3 rings, polite greeting.", reflection:"Every email and call represents my reputation. No missing subjects, polite phrases always.", xp:75 },
+            { id:9, title:"🌍 World 09 – Grooming & Dining Etiquette", brief:"First impressions, grooming, posture, dining etiquette.", skillsLearned:"Personal presentation, body language, social grace.", concepts:"Skincare, hair care, nail care, proper dressing questions (occasion, culture). Posture affects internal state.", reflection:"Grooming shows respect. Body language is a skill. I will maintain polished appearance and confident presence.", xp:90 },
+            { id:10, title:"🌍 World 10 – Negotiation", brief:"BATNA framework, interest-based negotiation, avoiding mistakes.", skillsLearned:"Strategic negotiation, BATNA, creative solutions.", concepts:"BATNA = best alternative. Focus on interests not positions. Emotional control, preparation.", reflection:"You don't get what you want; you get what you negotiate. In role-play salary simulation, BATNA gave me leverage. I proposed lower start with 6-month review — accepted!", xp:86 }
+        ];
+        
+        // Build Game Map with detailed cards
+        const worldsGrid = document.getElementById('worldsGrid');
+        missionsData.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'mission-card';
+            card.innerHTML = `
+                <div style="font-family:Orbitron;font-size:1.25rem;">${m.title}</div>
+                <div style="margin:8px 0; opacity:0.9;">${m.brief.substring(0,75)}...</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+                    <span style="background: #0af33; padding: 4px 8px; border-radius: 20px;">XP +${m.xp}</span>
+                    <span class="hud-text" style="font-size:0.8rem;"><i class="fas fa-scroll"></i> VIEW MISSION</span>
+                </div>
+            `;
+            card.addEventListener('click', () => showMissionDetails(m));
+            worldsGrid.appendChild(card);
+        });
+        
+        function showMissionDetails(mission) {
+            const modal = document.getElementById('missionModal');
+            const innerDiv = document.getElementById('missionDetailInner');
+            innerDiv.innerHTML = `
+                <h2 style="color:cyan; font-family:Orbitron;">${mission.title}</h2>
+                <div style="border-left: 3px solid cyan; padding-left: 1rem; margin: 1rem 0;">
+                    <p><strong><i class="fas fa-bullhorn"></i> Mission Brief:</strong> ${mission.brief}</p>
+                    <p><strong><i class="fas fa-code-branch"></i> Key Skills Learned:</strong> ${mission.skillsLearned}</p>
+                    <p><strong><i class="fas fa-microchip"></i> Important Concepts:</strong> ${mission.concepts}</p>
+                </div>
+                <div class="glass-card" style="padding: 1rem; margin: 1rem 0;">
+                    <p><strong><i class="fas fa-dragon"></i> Mission Reflection:</strong><br> "${mission.reflection}"</p>
+                </div>
+                <div><strong>✨ XP Earned:</strong> ${mission.xp} XP</div>
+                <div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:${mission.xp}%"></div></div>
+                <div class="mt-2"><strong>📊 Level Progress:</strong> ${mission.xp}/100 → ${mission.xp >= 85 ? 'Veteran Tier' : 'Advancing'}</div>
+                <div style="margin-top: 16px; display: flex; gap: 12px;"><i class="fas fa-check-circle" style="color:lime;"></i> Mission unlocked! Keep grinding.</div>
+            `;
+            modal.style.display = 'flex';
+            document.getElementById('closeMissionModalBtn').onclick = () => modal.style.display = 'none';
+        }
+        
+        // Skill Tree glow
+        const skillTree = ["Communication","Leadership","Professional Ethics","Negotiation","Presentation","Teamwork","Confidence","Professional Behaviour"];
+        const skillContainer = document.getElementById('skillTreeContainer');
+        skillTree.forEach(skill => {
+            const node = document.createElement('div');
+            node.className = 'skill-tree-node';
+            node.innerHTML = `<i class="fas fa-crown"></i> ${skill}<div class="xp-bar-bg mt-1"><div class="xp-fill" style="width:${Math.floor(Math.random() * 35 + 60)}%"></div></div>`;
+            node.addEventListener('mouseenter', () => node.style.boxShadow = '0 0 20px cyan');
+            node.addEventListener('mouseleave', () => node.style.boxShadow = 'none');
+            skillContainer.appendChild(node);
+        });
+        
+        // Achievements list from PDF inspiration
+        const achievementsList = [
+            "🏆 Emotional Intelligence Master", "🏆 CV Architect", "🏆 Portfolio Creator", "🏆 Ethics Guardian",
+            "🏆 Interview Challenger", "🏆 Meeting Strategist", "🏆 Communication Specialist", 
+            "🏆 Professional Presence Expert", "🏆 Negotiation Tactician"
+        ];
+        const achGrid = document.getElementById('achievementsGrid');
+        achievementsList.forEach(ach => {
+            const badgeDiv = document.createElement('div');
+            badgeDiv.className = 'badge';
+            badgeDiv.innerHTML = `<i class="fas fa-medal"></i> ${ach}`;
+            achGrid.appendChild(badgeDiv);
+        });
+        
+        // Reflection Vault - detailed reflections from PDF (authentic)
+        const reflectionsDetailed = [
+            { title:"Introduction", text:"I never thought of professional skills as essential beyond technical. Johari Window opened my eyes. I set short-term goal: boost communication. My top values: honesty, respect, responsibility." },
+            { title:"Emotional Intelligence", text:"Aristotle was right: anger can be practiced. I now notice my emotional leakage: clenched jaw, posture. I'll use mindfulness to regulate." },
+            { title:"CV Writing", text:"One spelling mistake can ruin everything. My CV is my handshake before meeting. I will tailor every application and proofread 10x." },
+            { title:"Portfolio Writing", text:"A degree proves you studied. A portfolio proves you can DO. I'm building GitHub Pages + LinkedIn to showcase my IT journey." },
+            { title:"Ethics & Responsibilities", text:"Technical skills are incomplete without ethics. As an IT student, I will handle data with integrity and follow codes of conduct." },
+            { title:"Interview Skills", text:"An interview is not a judgment, it's a conversation. I practiced posture, smile and eye contact. Nervousness is normal but preparation wins." },
+            { title:"Meetings", text:"I used to interrupt. Now I understand: a good meeting is about listening. Agenda, minutes, ground rules — I'll follow them." },
+            { title:"Email & Telephone", text:"Every email creates impression. I'll never send without subject line. Telephone: answer within 3 rings and be polite." },
+            { title:"Grooming & Dining", text:"Grooming is respect for self and others. Posture changes internal state. I will dress appropriately for every occasion." },
+            { title:"Negotiation", text:"BATNA changed my game. I simulated salary negotiation and used creative solutions. You don't get what you want, you get what you negotiate." }
+        ];
+        const vaultDiv = document.getElementById('reflectionsVault');
+        reflectionsDetailed.forEach((ref, idx) => {
+            const card = document.createElement('div');
+            card.className = 'glass-card';
+            card.style.padding = '1.2rem';
+            card.innerHTML = `<i class="fas fa-quote-left" style="color:cyan;"></i> <strong>${ref.title} Reflection</strong><br>“${ref.text.substring(0, 120)}...”<div class="mt-1"><i class="fas fa-microphone-alt"></i> — Player Log —</div>`;
+            vaultDiv.appendChild(card);
+        });
+        
+        // Xp hover animations + Start Mission scroll
+        document.getElementById('startMissionBtn').addEventListener('click', () => {
+            document.querySelector('.worlds-grid').scrollIntoView({ behavior: 'smooth' });
+            const toast = document.createElement('div');
+            toast.innerText = "🎮 MISSION BRIEFING ACTIVATED! Choose a world.";
+            toast.style.position = 'fixed'; toast.style.bottom = '20px'; toast.style.left = '20px';
+            toast.style.background = '#0af'; toast.style.color = '#000'; toast.style.padding = '10px 24px';
+            toast.style.borderRadius = '30px'; toast.style.fontFamily = 'Orbitron'; toast.style.zIndex = '999';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        });
+        
+        // dynamic XP (simulate growth on mission interactions)
+        let comm = 72, lead = 60, team = 75, prob = 73, prof = 82;
+        setInterval(() => {
+            if(comm < 96) comm += 0.18; if(lead < 92) lead += 0.15; if(team < 94) team += 0.2;
+            if(prob < 92) prob += 0.17; if(prof < 96) prof += 0.12;
+            document.getElementById('commXP').innerText = Math.floor(comm);
+            document.getElementById('leadXP').innerText = Math.floor(lead);
+            document.getElementById('teamXP').innerText = Math.floor(team);
+            document.getElementById('probXP').innerText = Math.floor(prob);
+            document.getElementById('profXP').innerText = Math.floor(prof);
+            const fills = document.querySelectorAll('#commXP, #leadXP, #teamXP, #probXP, #profXP');
+            fills.forEach((el,i) => {
+                let bar = el.parentElement?.nextElementSibling?.querySelector('.xp-fill');
+                if(bar) bar.style.width = el.innerText + '%';
+            });
+        }, 4000);
+    </script>
+    <style>.mt-1 { margin-top: 8px; } .mt-2 { margin-top: 12px; }</style>
+</body>
+</html>

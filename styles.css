@@ -1,0 +1,177 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050511;
+            color: #eef5ff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0a0a1a; }
+        ::-webkit-scrollbar-thumb { background: #0af; border-radius: 10px; }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 255, 255, 0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 45px 45px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .glass-card {
+            background: rgba(5, 15, 30, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            border: 1px solid rgba(0, 255, 255, 0.35);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: #0af;
+            box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
+        }
+        .hud-text {
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px #0af;
+        }
+        button {
+            background: linear-gradient(135deg, #0a2a3a, #001a2a);
+            border: 1px solid #0af;
+            color: cyan;
+            font-family: 'Orbitron', monospace;
+            font-weight: bold;
+            padding: 10px 24px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 6px cyan;
+        }
+        button:hover {
+            background: #0af;
+            color: #0a0a1f;
+            box-shadow: 0 0 20px cyan;
+            transform: scale(1.02);
+        }
+        .xp-bar-bg {
+            background: #1e2a3a;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 10px;
+            width: 100%;
+        }
+        .xp-fill {
+            background: linear-gradient(90deg, #0af, #a0f);
+            width: 0%;
+            height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 0 6px cyan;
+        }
+        .worlds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        .mission-card {
+            background: rgba(0, 10, 25, 0.75);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #0af3;
+            transition: 0.25s ease;
+            cursor: pointer;
+        }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            border-color: #0af;
+            box-shadow: 0 10px 28px rgba(0,170,255,0.4);
+        }
+        .skill-tree-node {
+            background: radial-gradient(circle at 30% 10%, #0a2a3a, #021020);
+            border-radius: 2rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid cyan;
+            transition: all 0.2s;
+            min-width: 140px;
+        }
+        .badge {
+            background: linear-gradient(145deg, #1e2f4b, #0a1428);
+            border-radius: 1rem;
+            padding: 0.9rem 1.2rem;
+            transition: 0.2s;
+            text-align: center;
+            font-weight: 600;
+        }
+        .badge:hover {
+            transform: scale(1.03) translateY(-4px);
+            background: #0af22;
+            box-shadow: 0 0 18px cyan;
+        }
+        .modal-rpg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(14px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content-rpg {
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: #0a1022dd;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 2px solid cyan;
+            box-shadow: 0 0 40px rgba(0,255,255,0.3);
+        }
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .worlds-grid { grid-template-columns: 1fr; }
+        }
+        .floating {
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .timeline-node {
+            background: #0a0f2a;
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            border-left: 3px solid cyan;
+        }
